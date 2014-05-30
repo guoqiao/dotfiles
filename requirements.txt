@@ -1,0 +1,6 @@
+Django
+path.py
+django-annoying
+django-extensions
+virtualenv
+virtualenvwrapper
