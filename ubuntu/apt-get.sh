@@ -1,3 +1,3 @@
 sudo apt-get update
 sudo apt-get install -y \
-    build-essential python-dev libmysqlclient-dev python-mysqldb
+    build-essential python-setuptools python-dev libmysqlclient-dev python-mysqldb
