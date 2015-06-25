@@ -15,5 +15,6 @@ ln -is $DOTFILES/.zshrc
 ln -is $DOTFILES/.gitconfig
 ln -is $DOTFILES/.tmux.conf
 
-wget https://bootstrap.pypa.io/get-pip.py /tmp/
-sudo python /tmp/get-pip.py
+cd /tmp
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
