@@ -1,5 +1,5 @@
 #!/bin/bash
-DOTFILES="$HOME/Dropbox/dotfiles"
+DOTFILES="$HOME/dotfiles"
 
 VIMSRC="$DOTFILES/.vim"
 VIMDST="$HOME/.vim"
@@ -14,3 +14,6 @@ cd $HOME
 ln -is $DOTFILES/.zshrc
 ln -is $DOTFILES/.gitconfig
 ln -is $DOTFILES/.tmux.conf
+
+wget https://bootstrap.pypa.io/get-pip.py /tmp/
+sudo python /tmp/get-pip.py
