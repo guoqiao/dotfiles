@@ -24,6 +24,7 @@ Plugin 'mattn/emmet-vim'
 
 " Syntax Highlight
 Plugin 'colorizer'
+Plugin 'molokai'
 
 " Programming
 Plugin 'python.vim'
@@ -121,7 +122,11 @@ set guifont=Monaco:h16
 set guioptions-=r
 set guioptions-=L
 
-colorscheme desert
+try
+    colorscheme molokai
+catch
+    colorscheme desert
+endtry
 set background=dark
 
 " plugin settings
