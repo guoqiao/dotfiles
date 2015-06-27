@@ -77,5 +77,6 @@ export LANG=en_US.UTF-8
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
 
-export WORKON_HOME=~/venv
+export WORKON_HOME=~/env
 source /usr/local/bin/virtualenvwrapper.sh
+
