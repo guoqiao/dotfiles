@@ -61,15 +61,16 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='vim'
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-precmd () {print -Pn "\e]2; %~/ \a"}
-preexec () {print -Pn "\e]2; %~/ \a"}
+# precmd () {print -Pn "\e]2; %~/ \a"}
+# preexec () {print -Pn "\e]2; %~/ \a"}
 
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
