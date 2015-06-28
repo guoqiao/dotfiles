@@ -38,8 +38,6 @@ Plugin 'colorizer'
 Plugin 'python.vim'
 Plugin 'pyflakes.vim'
 Plugin 'mattn/emmet-vim'
-" let g:user_emmet_expandabbr_key = '<Tab>'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 
