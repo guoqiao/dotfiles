@@ -3,9 +3,9 @@ source ~/.vim/vimrc.basic
 Plugin 'Syntastic'
 
 
-Plugin 'Valloric/YouCompleteMe'
-let g:ycm_filetype_whitelist = { 'python':1 }
-nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"Plugin 'Valloric/YouCompleteMe'
+"let g:ycm_filetype_whitelist = { 'python':1 }
+"nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 Plugin 'YankRing.vim'
