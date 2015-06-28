@@ -1,40 +1,7 @@
-set nocompatible              " be iMproved
-filetype off                  " required!
+" cd .vim
+" mkdir -p bundle
+" git clone https://github.com/gmarik/vundle.git bundle/vundle
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Plugin 'gmarik/vundle'
-
-" Editing
-Plugin 'matchit.zip'
-Plugin 'repeat.vim'
-Plugin 'surround.vim'
-
-" File explore
-Plugin 'The-NERD-Commenter'
-Plugin 'The-NERD-tree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
-
-" Auto complete
-Plugin 'mattn/emmet-vim'
-
-" Syntax Highlight
-Plugin 'colorizer'
-Plugin 'molokai'
-
-" Programming
-Plugin 'python.vim'
-Plugin 'pyflakes.vim'
-
-" Others
-Plugin 'tpope/vim-fugitive'
-
-filetype plugin indent on     " required!
-"
 " Brief help
 " :PluginList          - list configured bundles
 " :PluginInstall(!)    - install (update) bundles
@@ -43,6 +10,38 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin commands are not allowed.
+
+set nocompatible              " be iMproved
+filetype off                  " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Plugin 'gmarik/vundle'        " required!
+
+" basic
+Plugin 'The-NERD-tree'
+let g:NERDTreeDirArrows=0
+let g:NERDTreeChDirMode=2
+map tt :NERDTreeToggle<CR>
+map ff :NERDTreeFind<CR>
+
+Plugin 'The-NERD-Commenter'
+Plugin 'vim-indent-object'
+Plugin 'matchit.zip'
+Plugin 'repeat.vim'
+Plugin 'surround.vim'
+Plugin 'molokai'
+Plugin 'peaksea'
+Plugin 'colorizer'
+Plugin 'python.vim'
+Plugin 'pyflakes.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-airline'
+
+filetype plugin indent on     " required!
 
 syntax on
 syntax enable
@@ -80,6 +79,7 @@ let loaded_matchparen = 1 " disable math parenthiese
 
 set expandtab
 set smarttab
+set autoindent
 set smartindent
 set shiftwidth=4
 set tabstop=4
@@ -87,6 +87,8 @@ set tabstop=4
 noremap ; :
 noremap 0 ^
 noremap <space> $
+noremap B ^
+noremap E $
 noremap Y y$
 
 " Treat long lines as break lines (useful when moving around in them)
@@ -108,7 +110,11 @@ nnoremap tm :tabmove<CR>
 nnoremap to :tabonly<CR>
 
 let mapleader = ","
+let g:mapleader = ","
 nnoremap <leader>h :noh<CR>
+nnoremap <leader>w :w!<CR>
+nnoremap <leader>x :x<CR>
+nnoremap <leader>q :q!<CR>
 
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
@@ -128,22 +134,6 @@ catch
     colorscheme desert
 endtry
 set background=dark
-
-" plugin settings
-
-let g:NERDTreeDirArrows=0
-let g:NERDTreeChDirMode=2
-map tt :NERDTreeToggle<CR>
-map ff :NERDTreeFind<CR>
-
-let g:ctrlp_tabpage_position = 'a'
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
 
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
