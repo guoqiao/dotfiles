@@ -1,14 +1,23 @@
 [user]
-	name = coolman
-	email = coolman@gmail.com
+	name = guoqiao
+	email = guoqiao@gmail.com
 
 [alias]
+    cp = cherry-pick
 	co = checkout
 	ci = commit
-	st = status
+	cl = clone
+	st = status -s
 	br = branch
-    df = diff
+    df = diff --word-diff
+    dc = diff --cached
     lg = log -p
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lf = log -u
+    sl = stash list
+    sa = stash apply
+    ss = stash save
 
 [color]
 	ui = true
