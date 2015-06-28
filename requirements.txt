@@ -3,4 +3,4 @@ path.py
 virtualenv
 virtualenvwrapper
 supervisor
-uwsgi
+#uwsgi
