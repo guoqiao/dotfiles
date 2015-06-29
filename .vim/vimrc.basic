@@ -27,6 +27,9 @@ let g:NERDTreeChDirMode=2
 map tt :NERDTreeToggle<CR>
 map ff :NERDTreeFind<CR>
 
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_tabpage_position = 'a'
+
 Plugin 'The-NERD-Commenter'
 Plugin 'vim-indent-object'
 Plugin 'matchit.zip'

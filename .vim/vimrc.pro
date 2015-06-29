@@ -12,10 +12,8 @@ Plugin 'YankRing.vim'
 map <leader>p :YRShow<CR>
 let yankring_min_element_length=4
 
-
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_tabpage_position = 'a'
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+" change command only in pro
+let g:ctrlp_user_command = 'ag %s -S --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
       \ --ignore .hg
