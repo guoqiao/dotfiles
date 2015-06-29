@@ -8,10 +8,6 @@ Plugin 'Syntastic'
 "nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
-Plugin 'YankRing.vim'
-map <leader>p :YRShow<CR>
-let yankring_min_element_length=4
-
 " change command only in pro
 let g:ctrlp_user_command = 'ag %s -S --nocolor --nogroup --hidden
       \ --ignore .git
