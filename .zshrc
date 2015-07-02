@@ -18,10 +18,10 @@ alias fullpath="readlink -f"
 # CASE_SENSITIVE="true"
 
 # Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how often before auto-updates occur? (in days)
-export UPDATE_ZSH_DAYS=30
+# export UPDATE_ZSH_DAYS=30
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -48,7 +48,7 @@ export UPDATE_ZSH_DAYS=30
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git common-alias)
+# plugins=(common-alias)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,7 +66,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR='vim'
 
 # Compilation flags
-export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -77,8 +77,8 @@ export ARCHFLAGS="-arch x86_64"
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
 
-export CFLAGS=-Qunused-arguments
-export CPPFLAGS=-Qunused-arguments
+# export CFLAGS=-Qunused-arguments
+# export CPPFLAGS=-Qunused-arguments
 
 export WORKON_HOME=~/env
 source /usr/local/bin/virtualenvwrapper.sh
@@ -92,5 +92,5 @@ alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm 
 alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
 
 # Delete all stopped containers and untagged images.
- alias dockerclean='dockercleanc || true && dockercleani'
+alias dockerclean='dockercleanc || true && dockercleani'
 
