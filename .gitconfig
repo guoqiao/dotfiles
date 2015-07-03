@@ -20,7 +20,7 @@
     ss = stash save
 
 [color]
-	ui = true
+	ui = auto
 
 [push]
 	default = simple
