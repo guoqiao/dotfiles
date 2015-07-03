@@ -1,0 +1,33 @@
+PROMPT="%n@%m:%d $ "
+
+alias .="source"
+alias ..="cd .."
+alias ...="cd ../.."
+
+alias ls="ls --color"
+alias ll="ls -aHl"
+
+alias path="readlink -f"
+
+
+alias dockerkillall='docker kill $(docker ps -q)'
+# Delete all stopped containers.
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+# Delete all untagged images.
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+# Delete all stopped containers and untagged images.
+alias dockerclean='dockercleanc || true && dockercleani'
+
+
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export EDITOR='vim'
+
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
+
+# export CFLAGS=-Qunused-arguments
+# export CPPFLAGS=-Qunused-arguments
+
+export WORKON_HOME=~/env
+source /usr/local/bin/virtualenvwrapper.sh
+
