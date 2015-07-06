@@ -1,11 +1,18 @@
-PROMPT="%n@%m:%d $ "
-
 alias .="source"
 alias ..="cd .."
 alias ...="cd ../.."
 
 alias ls="ls --color"
 alias ll="ls -aHl"
+
+alias gpl="git pull"
+alias gpu="git push"
+alias gcl="git clone"
+alias gco="git checkout"
+alias gcm="git checkout master"
+alias gcd="git checkout dev"
+alias gdf="git diff"
+alias gst="git status -s"
 
 alias path="readlink -f"
 
@@ -31,3 +38,23 @@ export LANG=en_US.UTF-8
 export WORKON_HOME=~/env
 source /usr/local/bin/virtualenvwrapper.sh
 
+setopt prompt_subst
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' actionformats \
+    '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats       \
+    '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
+zstyle ':vcs_info:*' enable git cvs svn
+
+# or use pre_cmd, see man zshcontrib
+vcs_info_wrapper() {
+  vcs_info
+  if [ -n "$vcs_info_msg_0_" ]; then
+    echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+  fi
+}
+
+RPROMPT=$'$(vcs_info_wrapper)'
+PROMPT="%n@%m:%d $ "
