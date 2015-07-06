@@ -127,6 +127,7 @@ nnoremap <leader>q :q!<CR>
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+com! FJ %!python -m json.tool
 autocmd! bufwritepost vimrc source %
 cmap W w !sudo tee > /dev/null %
 map <leader>pp :setlocal paste!<cr>
