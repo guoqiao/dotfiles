@@ -28,7 +28,6 @@ map tt :NERDTreeToggle<CR>
 map ff :NERDTreeFind<CR>
 
 Plugin 'YankRing.vim'
-map <leader>p :YRShow<CR>
 let yankring_min_element_length=4
 
 " ctrlp and yankring both use ctrl-p, last one works
@@ -36,6 +35,11 @@ Plugin 'kien/ctrlp.vim'
 let g:ctrlp_tabpage_position = 'a'
 
 Plugin 'The-NERD-Commenter'
+let NERDSpaceDelims = 1 " add space for comment delim
+
+Plugin 'airblade/vim-gitgutter'
+let g:gitgutter_sign_column_always = 1
+
 Plugin 'vim-indent-object'
 Plugin 'matchit.zip'
 Plugin 'repeat.vim'
@@ -48,6 +52,7 @@ Plugin 'pyflakes.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
+Plugin 'easymotion/vim-easymotion'
 
 filetype plugin indent on     " required!
 
@@ -117,6 +122,10 @@ nnoremap tc :tabclose<CR>
 nnoremap tm :tabmove<CR>
 nnoremap to :tabonly<CR>
 
+com! FJ %!python -m json.tool
+autocmd! bufwritepost vimrc source %
+cmap W w !sudo tee > /dev/null %
+
 let mapleader = ","
 let g:mapleader = ","
 nnoremap <leader>h :noh<CR>
@@ -127,11 +136,9 @@ nnoremap <leader>q :q!<CR>
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
-com! FJ %!python -m json.tool
-autocmd! bufwritepost vimrc source %
-cmap W w !sudo tee > /dev/null %
 map <leader>pp :setlocal paste!<cr>
 map <leader>ss :setlocal spell!<cr>
+map <leader>p :YRShow<CR>
 
 set t_Co=256
 set guifont=Monaco:h16

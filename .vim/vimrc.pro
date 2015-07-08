@@ -1,14 +1,27 @@
 source ~/.vim/vimrc.basic
 
+Plugin 'majutsushi/tagbar'
+map TT :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
+
+
 Plugin 'Syntastic'
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"Plugin 'Valloric/YouCompleteMe'
-"let g:ycm_filetype_whitelist = { 'python':1 }
-"nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 
-" change command only in pro
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_filetype_whitelist = { 'python':1 }
+nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 let g:ctrlp_user_command = 'ag %s -S --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
@@ -16,19 +29,6 @@ let g:ctrlp_user_command = 'ag %s -S --nocolor --nogroup --hidden
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
       \ -g ""'
-
-
-Plugin 'majutsushi/tagbar'
-map TT :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-
-
-Plugin 'SirVer/ultisnips'
-Plugin 'guoqiao/django-snippets'
-let g:UltiSnipsExpandTrigger = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
 
 Plugin 'terryma/vim-multiple-cursors'
