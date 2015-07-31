@@ -7,6 +7,7 @@ alias ll="ls -aHl"
 
 alias gpl="git pull"
 alias gpu="git push"
+alias gci="git commit -m"
 alias gcl="git clone"
 alias gco="git checkout"
 alias gcm="git checkout master"
