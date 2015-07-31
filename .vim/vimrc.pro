@@ -5,19 +5,6 @@ map TT :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 
-
-Plugin 'Syntastic'
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_filetype_whitelist = { 'python':1 }
 nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>

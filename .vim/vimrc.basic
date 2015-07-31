@@ -124,7 +124,6 @@ nnoremap to :tabonly<CR>
 
 com! FJ %!python -m json.tool
 autocmd! bufwritepost vimrc source %
-cmap W w !sudo tee > /dev/null %
 
 let mapleader = ","
 let g:mapleader = ","
