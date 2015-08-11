@@ -33,6 +33,7 @@ let yankring_min_element_length=4
 " ctrlp and yankring both use ctrl-p, last one works
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_tabpage_position = 'a'
+let g:ctrlp_by_filename = 1
 
 Plugin 'The-NERD-Commenter'
 let NERDSpaceDelims = 1 " add space for comment delim
