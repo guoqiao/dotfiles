@@ -1,0 +1,108 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "python-slugify>=8.0.4",
+# ]
+# ///
+
+import shutil
+from pathlib import Path
+
+
+def apply_case(text, case=None):
+    if case == "lower":
+        return text.lower()
+    if case == "upper":
+        return text.upper()
+    return text
+
+
+def slugify_text(
+    text, separator="_", case=None, lowercase=False, allow_unicode=True, max_length=0
+):
+    """
+    Slugify a text.
+    """
+    from slugify import slugify
+    slug = slugify(
+        text,
+        allow_unicode=allow_unicode,
+        lowercase=lowercase,
+        separator=separator,
+        max_length=max_length,
+        word_boundary=True,
+        replacements=[
+            ("'", ""),  # John's -> Johns, othereise will be "Jone s"
+        ],
+    )
+    return apply_case(slug, case=case)
+
+
+def slugify_path(path, **kwargs):
+    path = Path(path)
+    new_stem = slugify_text(path.stem, **kwargs)
+    new_suffix = path.suffix.lower()  # ensure suffix is lowercase
+    new_name = f"{new_stem}{new_suffix}"
+    return path.with_name(new_name)
+
+
+def ensure_destination_available(path, new_path):
+    if new_path == path:
+        return
+    if new_path.exists():
+        raise FileExistsError(f"destination already exists: {new_path}")
+
+
+def slugify_copy(path, **kwargs):
+    new_path = slugify_path(path, **kwargs)
+    ensure_destination_available(path, new_path)
+    if new_path != path:
+        shutil.copy2(path, new_path)
+    return new_path
+
+
+def slugify_move(path, **kwargs):
+    path = Path(path)
+    new_path = slugify_path(path, **kwargs)
+    ensure_destination_available(path, new_path)
+    if new_path != path:
+        shutil.move(path, new_path)
+    return new_path
+
+
+def cli():
+    import argparse
+    parser = argparse.ArgumentParser(
+        description="Slugify text or a filename",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument("-s", "--sep", default="_", help="separator to use in the slug")
+    parser.add_argument("-n", "--max-length", type=int, default=0, help="maximum slug length; 0 means unlimited")
+    case = parser.add_mutually_exclusive_group()
+    case.add_argument("--lower", action="store_const", const="lower", dest="case", help="print lowercase slug")
+    case.add_argument("--upper", action="store_const", const="upper", dest="case", help="print uppercase slug")
+    action = parser.add_mutually_exclusive_group(required=True)
+    action.add_argument("text", nargs="?", help="text to slugify and print")
+    action.add_argument("--move", metavar="PATH", help="rename PATH to its slugified filename")
+    action.add_argument("--copy", metavar="PATH", help="copy PATH to its slugified filename")
+    return parser.parse_args()
+
+
+def main():
+    args = cli()
+    slug_options = {
+        "separator": args.sep,
+        "case": args.case,
+        "max_length": args.max_length,
+    }
+    if args.move:
+        print(slugify_move(args.move, **slug_options))
+    elif args.copy:
+        print(slugify_copy(args.copy, **slug_options))
+    else:
+        print(slugify_text(args.text, **slug_options))
+
+
+if __name__ == "__main__":
+    main()

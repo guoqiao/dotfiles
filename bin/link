@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -ueo pipefail
+
+# relative path to current dir
+relpath="${1:-.gitconfig}"
+abspath=$(pwd)/${relpath}
+dstpath=~/${relpath}
+
+if [[ -e "${dstpath}" ]]; then
+    echo "dst file already exists, skip"
+    ls -l ${dstpath}
+else
+    echo "creating symlink"
+    mkdir -p $(dirname ${dstpath})
+    # -f: override broken symlink
+    ln -vfs ${abspath} ${dstpath}
+fi
+

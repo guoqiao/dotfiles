@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+p=${1:-main.sh}
+
+cat > ${p} << EOF
+#!/usr/bin/env bash
+
+set -ueo pipefail
+
+echo "Hello, World!"
+
+EOF
+
+chmod a+x ${p}
+
+readlink -f ${p}
+
+${EDITOR:-vim} ${p}
+

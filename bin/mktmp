@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+TMP_DIR=$(mktemp -d)
+cd "$TMP_DIR" || exit 1
+echo "Entered temp directory:"
+pwd
