@@ -1,7 +1,7 @@
 SHELL = /bin/bash
 .ONESHELL:
 
-.PHONY: all build clean test
+.PHONY: all build clean test tmux
 
 all:
 	@uname | grep Darwin && make mac || true
@@ -63,14 +63,19 @@ npm:
 	bin/link .npmrc
 	npm i -g hunk
 
+bun:
+	curl -fsSL https://bun.sh/install | bash
+
 git:
 	brew install git tig lazygit git-delta bat
 	bin/link .gitconfig
 	bash setup/git_config_user.sh
 
-tmux:
+tmux: bun
 	brew install tmux
+	bash setup/tmux-palette.sh
 	bin/link .tmux.conf
+	tmux source-file ~/.tmux.conf || true
 
 direnv:
 	brew install direnv
