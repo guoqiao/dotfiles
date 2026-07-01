@@ -9,25 +9,25 @@ from pathlib import Path
 def get_sub_paths(parent, *subdirs):
     # /usr/local, bin, sbin -> /usr/local/bin, /usr/local/sbin
     if os.path.exists(parent):
-        return [f"{parent}/{subdir}" for subdir in subdirs]
+        return [f"{parent}{subdir}" for subdir in subdirs]
     else:
         return []
 
 
 PATH = [
-    '~/.dot/bin',
-    '~/.dot/.venv/bin',
-    '~/bin',
-    '~/.local/bin',
-    '~/.npm-global/bin',
-    '~/.amp/bin',
-    '~/.bun/bin',
+    '~/.dot/bin', '~/.dot/.venv/bin',
+    '~/bin', '~/.local/bin',
+    '~/.npm-global/bin', '~/.uv-global/bin', '~/.bun/bin',
     '~/.cargo/bin',
-    '~/.orbstack/bin',
+    '~/.amp/bin',
     '~/.browser-use-env/bin',
-    *get_sub_paths('/home/linuxbrew/.linuxbrew', 'bin', 'sbin'),
-    *get_sub_paths('/opt/homebrew', 'bin', 'sbin'),
+    '~/.orbstack/bin',
+    *get_sub_paths('/home/linuxbrew/.linuxbrew/', 'bin', 'sbin'),
+    *get_sub_paths('/opt/homebrew/', 'bin', 'sbin'),
     '/usr/local/cuda/bin',
+    *get_sub_paths('/usr/local/', 'bin', 'sbin'),
+    *get_sub_paths('/usr/', 'bin', 'sbin'),
+    *get_sub_paths('/', 'bin', 'sbin'),
 ]
 
 valid_paths = []
@@ -41,5 +41,5 @@ for path in PATH:
 
 PATH = ':'.join([str(p) for p in valid_paths])
 # add a new line at end
-line = f'export PATH={PATH}:$PATH\n'
+line = f'export PATH={PATH}\n'
 print(line)
