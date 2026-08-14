@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "ansible>=13.7.0",
+    "firecrawl>=4.35.0",
     "furl>=2.1.4",
     "liteparse>=2.6.0",
     "loguru>=0.7.3",
