@@ -54,8 +54,8 @@ ghostty-list-fonts:
 	~/bin/ghostty +list-fonts
 
 uv:
-	brew install uv
-	uv sync
+	brew install uv || true
+	uv sync --upgrade
 
 npm:
 	brew install node@24 pnpm

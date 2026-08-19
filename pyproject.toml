@@ -8,11 +8,17 @@ dependencies = [
     "firecrawl>=4.35.0",
     "furl>=2.1.4",
     "loguru>=0.7.3",
+    "markitdown-ocr>=0.1.0",
+    "markitdown[all]>=0.1.7",
     "openai>=2.33.0",
     "pillow>=12.2.0",
     "python-dotenv>=1.2.2",
     "pywinrm>=0.5.0",
     "requests>=2.33.1",
     "yfinance>=1.4.1",
+    "trafilatura>=2.2.0",
     "yt-dlp>=2026.3.17",
 ]
+
+[tool.uv.sources]
+markdownslides = { git = "https://gitlab.com/da_doomer/markdown-slides.git" }
