@@ -20,17 +20,18 @@ homebrew:
 	command -v brew || bash setup/homebrew.sh
 	@echo "please add brew bin to your PATH"
 
-brew:
-	brew install \
+brew: homebrew
+	brew install -y \
 		bat \
 		direnv \
 		eza \
 		fd \
+		herdr \
 		htop \
 		jq \
 		ncdu \
 		ripgrep \
-		tldr \
+		tlrc \
 		tree \
 		uv \
 		vim \
@@ -70,6 +71,13 @@ git:
 	brew install git tig lazygit git-delta bat
 	bin/link .gitconfig
 	bash setup/git_config_user.sh
+
+herdr:
+	brew install herdr
+	# bash setup/herdr.sh
+	mkdir -p ~/.config/herdr
+	# cp when missing, instead of ln
+	cp -n .config/herdr/config.toml ~/.config/herdr/config.toml || true
 
 tmux: bun
 	brew install tmux
